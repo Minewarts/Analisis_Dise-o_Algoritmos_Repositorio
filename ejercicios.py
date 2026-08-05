@@ -80,15 +80,38 @@ def count_in_str(string_1:str, string_in:str)->int:
 print(count_in_str(s1, s2))'''
 #----------------------------------------------------------------------------------------------------------------------------------------#
 '''Dado un arreglo de enteros, calcular la suma maxima de  un subarreglo contiguo'''
-x = [3,-4,5,7,-7,9] 
-def sum_max_cont(l:List[int])->int:
-    suma_max : int = -99999
-    for i in range(len(l)):
-        if i==0:
-            array_cont:List[int] = l[i:i+2]
+"""x = [3,-4,5,7,-7,9] 
+def sum_max_cont(l:List[float])->float:
+    sum_max = float("-inf")
+    for i in range (len(l)):
+
+
+    return suma_max
+
 
 
 
 
     
-print(sum_max_cont(x))
+print(sum_max_cont(x))"""
+#----------------------------------------------------------------------------------------------------------------------------------------#
+"""Permutaciones"""
+s1= "easlñop"
+
+def permutaciones(text:str)->List[str]:
+    permutaciones=[]
+    for i, value_i in enumerate(text):
+
+        for j, value_j in enumerate(text):
+            if i == j:
+                pass
+            else:
+                for k, value_k in enumerate(text):
+                    if k == j or k ==i:
+                        pass 
+                    else: 
+                        permutaciones.append(f'{value_i}{value_j}{value_k}')
+
+    return permutaciones
+
+print(permutaciones(s1))
