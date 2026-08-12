@@ -96,7 +96,7 @@ def sum_max_cont(l:List[float])->float:
 print(sum_max_cont(x))"""
 #----------------------------------------------------------------------------------------------------------------------------------------#
 """Permutaciones"""
-s1= "easl"
+'''s1= "easl"
 
 
 def obtener_permutaciones(texto:str)->List[str]:
@@ -132,5 +132,40 @@ def permutaciones_recursivas(texto:str, current:str="", permutaciones: List[str]
     return permutaciones
 
 print(obtener_permutaciones(s1))
-print(permutaciones_recursivas(s1))
-            
+print(permutaciones_recursivas(s1))'''
+
+matriz = [[2,1,1,1,1],[0,1,0,1,1], [0,0,1,1,1],[0,0,1,1,1],[1,0,1,1,1]]
+
+def tamaño_submatriz(matriz:List[List[int]])->int:
+    max_n:int = 0
+    for i in range (len(matriz)-1):
+        for j in range (len(matriz)-1):
+            n=i
+            m=j
+            if matriz[i][j] == 1:
+                flag=False
+                n+=1
+                m+=1
+                sub_matriz= matriz[i:n][j:m]
+                print(sub_matriz)
+
+                for k in range(len(sub_matriz)-1):
+                    for h in range(len(sub_matriz)-1):
+                        if sub_matriz[k][h] != 1:
+                            break
+                        if len(sub_matriz) == k+1 and len(sub_matriz) == h+1:
+                            if max_n< k+1:
+                                max_n = k+1
+                                flag = True
+                                break
+                    if flag:
+                        break
+
+
+                    if sub_matriz[k,h] != 1:
+                        break
+
+    return max_n
+
+print(tamaño_submatriz(matriz))
+                    
