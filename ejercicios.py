@@ -96,25 +96,41 @@ def sum_max_cont(l:List[float])->float:
 print(sum_max_cont(x))"""
 #----------------------------------------------------------------------------------------------------------------------------------------#
 """Permutaciones"""
-s1= "eas"
+s1= "easl"
 
 
-
-def obtener_permutaciones(texto):
+def obtener_permutaciones(texto:str)->List[str]:
     if len(texto) <= 1:
         return [texto]
     
     lista_permutaciones = []
-    for i in range(len(texto)):
-        actual = texto[i]
-        resto = texto[:i] + texto[i+1:]
-        print(f"actual: {actual}, resto: {resto}")
+    niveles = [""]
+    while(niveles):
+        current = niveles.pop(0)
 
-        for p in obtener_permutaciones(resto):
-            lista_permutaciones.append(actual + p)
-            print (f"permutacion: {actual + p}")
+        if len(current) == len(texto):
+            lista_permutaciones.append(current)
+            continue
+
+        for char in texto:
             
+            if char in current:
+                continue
+            niveles.append(current+char)
+
     return lista_permutaciones
 
+def permutaciones_recursivas(texto:str, current:str="", permutaciones: List[str]=[])->List[str]:
+    if len(current) == len(texto):
+        permutaciones.append(current)
+        return permutaciones
+
+    for char in texto:
+        if char not in current:
+            permutaciones_recursivas(texto, current+char, permutaciones)
+    
+    return permutaciones
+
 print(obtener_permutaciones(s1))
+print(permutaciones_recursivas(s1))
             
