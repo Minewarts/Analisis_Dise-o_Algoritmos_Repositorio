@@ -215,8 +215,12 @@ w=[2,3,4,5] #peso
 v=[3,4,5,6] #valor
 
 def subconjunto_max_valor(peso:List[int], valor:List[int], W:int )-> List[int]:
-    for i in range (len(peso)):
-        for j in range(i, peso):
+    suma_max=float("-inf")
+    diccionario= {}
+
+    combinaciones= [i for i in peso ]
+
+
         
 
 
