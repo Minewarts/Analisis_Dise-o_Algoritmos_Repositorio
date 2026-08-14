@@ -133,8 +133,8 @@ def permutaciones_recursivas(texto:str, current:str="", permutaciones: List[str]
 
 print(obtener_permutaciones(s1))
 print(permutaciones_recursivas(s1))'''
-
-matriz = [[2,1,1,1,1],[0,1,0,1,1], [0,0,1,1,1],[0,0,1,1,1],[1,0,1,1,1]]
+#----------------------------------------------------------------------------------------------------------------------------------------#
+"""matriz = [[2,1,1,1,1],[0,1,0,1,1], [0,0,1,1,1],[0,0,1,1,1],[1,0,1,1,1]]
 
 def tamaño_submatriz(matriz:List[List[int]])->int:
     max_n:int = 0
@@ -146,8 +146,7 @@ def tamaño_submatriz(matriz:List[List[int]])->int:
                 flag=False
                 n+=1
                 m+=1
-                sub_matriz= matriz[i:n][j:m]
-                print(sub_matriz)
+                sub_matriz= [fila[j:m] for fila in matriz[i:n]]
 
                 for k in range(len(sub_matriz)-1):
                     for h in range(len(sub_matriz)-1):
@@ -162,10 +161,62 @@ def tamaño_submatriz(matriz:List[List[int]])->int:
                         break
 
 
-                    if sub_matriz[k,h] != 1:
+                    if sub_matriz[k][h] != 1:
                         break
 
-    return max_n
+    return max_n"""
 
-print(tamaño_submatriz(matriz))
-                    
+
+"""def max_submatrix(matriz:List[List[int]])->int:
+    max_n:int = 0
+    for m in range(len(matriz)):
+        for n in range(len(matriz)):
+            flag = False
+            for k in range (1,len(matriz)):
+                for i in range (m, m+k):
+                    for j in range (n, n+k):
+                        if (i+len(matriz) and j<len(matriz)):
+                            if(matriz[i][j] != 1):
+                                flag = True
+                                break
+                        if flag:
+                            break
+                    if flag:
+                        break
+                if flag:
+                    break"""
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------#
+"""promedio valores: dada una lista de enteros devolver la sublista de tamaño k con mejor promedio de valores"""
+
+"""list=[4,2,7,4,9,22]
+k = 2
+
+def mejor_promedio(list:List[int], k:int)->List[int]:
+    max_prom= float("-inf")
+    max_lista= []
+    for i in range (len(list)-1): #O(n) 
+        if i <= len(list)-(k) :
+            sublista=list[i:i+k] #O(n)
+            print(sublista)
+            if max_prom<= sum(sublista)/k: #O(n)
+                max_lista = sublista
+
+    return max_lista
+
+
+print(mejor_promedio(list,k))"""
+
+#----------------------------------------------------------------------------------------------------------------------------------------#
+# """conjuunto de n objetos, maximo valor bajo capacidad"""# 
+
+w=[2,3,4,5] #peso
+v=[3,4,5,6] #valor
+
+def subconjunto_max_valor(peso:List[int], valor:List[int], W:int )-> List[int]:
+    for i in range (len(peso)):
+        for j in range(i, peso):
+        
+
+
