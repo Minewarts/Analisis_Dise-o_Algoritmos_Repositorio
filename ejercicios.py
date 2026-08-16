@@ -1,4 +1,4 @@
-from typing import List,Set
+from typing import List,Set,Dict
 '''tenemos un conjunto ce C comidas y de B Bebidas'''
 
 '''comidas = ["c1","c2","c3","c4"]
@@ -79,27 +79,29 @@ def count_in_str(string_1:str, string_in:str)->int:
 
 print(count_in_str(s1, s2))'''
 #----------------------------------------------------------------------------------------------------------------------------------------#
-'''Dado un arreglo de enteros, calcular la suma maxima de  un subarreglo contiguo'''
-"""x = [3,-4,5,7,-7,9] 
+'''Dado un arreglo de enteros, calcular la suma maxima de un subarreglo contiguo'''
+'''x = [3,-4,5,7,-7,9] 
 def sum_max_cont(l:List[float])->float:
     sum_max = float("-inf")
     for i in range (len(l)):
+        for j in range (i+1, i+4):
+            if j <= len(l):
+                print(f'Current: {l[i:j]}')
+                sum_current =sum(l[i:j])
+                if  sum_current >= sum_max:
+                    print(f'suma maxima previa : {sum_max} ,suma maxima actual :{sum_current}')
+                    sum_max = sum_current
 
-
-    return suma_max
-
-
-
-
-
+    return sum_max
     
-print(sum_max_cont(x))"""
+print(sum_max_cont(x))'''
 #----------------------------------------------------------------------------------------------------------------------------------------#
 """Permutaciones"""
-'''s1= "easl"
+#s1= "easl" 
 
 
-def obtener_permutaciones(texto:str)->List[str]:
+
+'''def obtener_permutaciones(texto:str)->List[str]:
     if len(texto) <= 1:
         return [texto]
     
@@ -216,9 +218,19 @@ v=[3,4,5,6] #valor
 
 def subconjunto_max_valor(peso:List[int], valor:List[int], W:int )-> List[int]:
     suma_max=float("-inf")
-    diccionario= {}
+    combinaciones = [[[peso[i],valor[i]]] for i in range(len(peso))]
+    resultado_comb
+    subcojuntos = []
+    print(combinaciones)
 
-    combinaciones= [i for i in peso ]
+    for j in combinaciones:
+        nueva_combinaciones=[subconjunto+j for subconjunto in subcojuntos] 
+        
+        resultado_comb += nueva_combinaciones
+
+print (subconjunto_max_valor(w,v,5))
+
+
 
 
         
