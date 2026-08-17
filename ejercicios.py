@@ -218,19 +218,93 @@ v=[3,4,5,6] #valor
 
 def subconjunto_max_valor(peso:List[int], valor:List[int], W:int )-> List[int]:
     suma_max=float("-inf")
-    combinaciones = [[[peso[i],valor[i]]] for i in range(len(peso))]
-    resultado_comb
-    subcojuntos = []
-    print(combinaciones)
+    peso_valor = [[peso[i],valor[i],i] for i in range(len(peso))]
+    combinaciones = []
+    comb_aux = [[l] for l in peso_valor]
+    while comb_aux: 
+        current = comb_aux.pop(0)
+        combinaciones.append(current)
 
-    for j in combinaciones:
-        nueva_combinaciones=[subconjunto+j for subconjunto in subcojuntos] 
+        ultimo_elemento = current[-1]
+        ultimo_i = ultimo_elemento[2]
+
+        for j in range(ultimo_i+1,len(peso_valor)):
+            if ([peso_valor[j],current] not in comb_aux) and (peso_valor[j] != current) : 
+                comb_aux.append(current + [peso_valor[j]])
+
+    for k in combinaciones: 
+        peso_t = sum( m[0] for m in k )
+        valor_t = sum( n[1] for n in k )
+        if valor_t >= suma_max and peso_t <= W:
+            suma_max = valor_t
+            comb_max = k
+
+    return comb_max
+
+
+                
+            
+
+    
+
         
-        resultado_comb += nueva_combinaciones
+
+
 
 print (subconjunto_max_valor(w,v,5))
 
 
+##----------------------------------------------------------------------------------------------------------------------------------------#
+
+'''Tripleta Con suma objetivo
+
+Dado un arreglo de n enteros y un valor X, determine si existen tres elementos distintos cuya suma sea exactamente X'''
+
+'''array = [4,5,6,7,8,]
+objetive = 22
+
+def objetive_trio(list:List[int], objetive: int)->List[int]:
+    for i in list:
+        for j in list:
+            for k in list:
+                if sum([i,j,k])==objetive and i!=j and j != k and i!=k:
+                    return [i,j,k]
+    return 'no hay tripleta que sume la cantidad objetivo'
+
+print(objetive_trio(array, objetive))
+'''
+
+#----------------------------------------------------------------------------------------------------------------------------------------#
+
+
+'''inp='110101'
+
+def count_combination(st:str)->int: 
+    n = len(st)
+    count = 0 
+    r = []
+    for i in range(n-4):
+        for j in range (i+1, n-3): 
+            for k in range(j+1, n-2):
+                for l in range(k+1, n-1):
+                    for m in range(l+1, n):
+                        boo : bool= True
+                        if st[i] == st[j]:
+                            boo=False
+                        if st[j] == st[k]:
+                            boo=False
+                        if st[k] == st[l]:
+                            boo=False
+                        if st[l] == st[m]:
+                            boo=False
+                        if boo:
+                            count+=1
+                            r.append([st[i],st[j],st[k],st[l],st[m]])
+
+    return count,r
+
+print (count_combination(inp))'''
+                    
 
 
         
