@@ -241,16 +241,6 @@ def subconjunto_max_valor(peso:List[int], valor:List[int], W:int )-> List[int]:
 
     return comb_max
 
-
-                
-            
-
-    
-
-        
-
-
-
 print (subconjunto_max_valor(w,v,5))
 
 
