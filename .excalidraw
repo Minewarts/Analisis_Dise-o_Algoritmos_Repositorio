@@ -1,0 +1,51 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "UhywZ1KURTTrajEcQsnk1",
+      "type": "text",
+      "x": 291,
+      "y": 221,
+      "width": 384.306640625,
+      "height": 175,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aF",
+      "roundness": null,
+      "seed": 373745107,
+      "version": 3,
+      "versionNonce": 533712147,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1787148583011,
+      "link": null,
+      "locked": false,
+      "text": "for i in range(len(alf)):\n        mensaje_final = \"\"\n        text=[alf[-i:]+alf[:-i]]\n        print(\"\\n -\",text)\n        for m,value_m in enumerate (mensaje):\n            for n in index_og:\n                mensaje_final += value_m",
+      "fontSize": 20,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "for i in range(len(alf)):\n        mensaje_final = \"\"\n        text=[alf[-i:]+alf[:-i]]\n        print(\"\\n -\",text)\n        for m,value_m in enumerate (mensaje):\n            for n in index_og:\n                mensaje_final += value_m",
+      "autoResize": true,
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": 20,
+    "gridStep": 5,
+    "gridModeEnabled": false,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}
