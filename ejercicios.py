@@ -213,7 +213,7 @@ print(mejor_promedio(list,k))"""
 #----------------------------------------------------------------------------------------------------------------------------------------#
 # """conjuunto de n objetos, maximo valor bajo capacidad"""# 
 
-w=[2,3,4,5] #peso
+'''w=[2,3,4,5] #peso
 v=[3,4,5,6] #valor
 
 def subconjunto_max_valor(peso:List[int], valor:List[int], W:int )-> List[int]:
@@ -241,7 +241,7 @@ def subconjunto_max_valor(peso:List[int], valor:List[int], W:int )-> List[int]:
 
     return comb_max
 
-print (subconjunto_max_valor(w,v,5))
+print (subconjunto_max_valor(w,v,5))'''
 
 
 ##----------------------------------------------------------------------------------------------------------------------------------------#
