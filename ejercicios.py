@@ -294,9 +294,85 @@ def count_combination(st:str)->int:
     return count,r
 
 print (count_combination(inp))'''
-                    
 
 
-        
+#----------------------------------------------------------------------------------------------------------------------------------------#
+'''Tripleta mayor diferencia de permutaciones '''   
+'''l = [5,10,2]           
+
+def tripleta_mayor_dif(lista:List[int])->List[int]:
+    if len(lista)<= 1:
+        return [lista]
+
+
+    permutaciones=[]
+    for i in range (len(lista)):
+        actual = lista[i]
+        resto = lista[:i] + lista[i+1:]
+
+        for j in tripleta_mayor_dif(resto):
+            permutaciones.append([actual]+j)
+        print(permutaciones)
+
+    return permutaciones
+
+def filtro(permutaciones : List[List[int]] = tripleta_mayor_dif(l)):
+    lista=[]
+    for i in permutaciones:
+        suma=i[0]-sum(i[1:])
+        lista.append(suma)
+    lista.sort()
+    lista.reverse()
+    return lista[:3]
+
+
+print(filtro())'''
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------#
+'''Dado un arreglo de enteros, encuentra el par de índices distintos ((i, j)) 
+cuya suma (a_i + a_j) sea más cercana a un valor (T). Si hay empate, elige el 
+par con menor suma absoluta (|a_i + a_j|). Si persiste el empate, el menor (i), 
+luego menor (j).'''
+
+'''def suma_pares_cercano_a_t(array:List[int], target:int )-> List[int]:
+    near_array : List[List[int]] = []
+    near_sum = 0
+    min_dif = float('inf')
+    for i, value_i in enumerate(array):
+        for j,value_j in enumerate(array):
+
+            if value_j+value_i == near_sum and j != i:
+                            near_array.append([i,j])
+
+            if abs((value_j+value_i) - target) < min_dif and j != i:
+                near_sum = value_j+value_i
+                near_array = [[i,j]]
+                min_dif = abs((value_j+value_i)-target)
+    print (near_array)
+            
+
+    min_sum= float('inf')
+    target_array : List[int] = []
+    if len(near_array) > 1:
+        for k in near_array:
+            print(k)
+            if abs(array[k[0]]+array[k[1]]) < min_sum:
+                target_array = k 
+                min_sum = abs(sum(k))
+            elif abs(array[k[0]]+array[k[1]]) == min_sum:
+                target_array = min([k,target_array])
+    else:
+        return [near_array[0], near_sum]
+
+
+    return [target_array, near_sum]
+
+array=[1,2,3,4,5,6,7]
+t = 12
+print (suma_pares_cercano_a_t(array,t))'''
+
+
+
 
 
