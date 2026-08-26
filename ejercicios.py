@@ -1,4 +1,4 @@
-from typing import List,Set,Dict
+from typing import List,Set,Dict,Tuple
 '''tenemos un conjunto ce C comidas y de B Bebidas'''
 
 '''comidas = ["c1","c2","c3","c4"]
@@ -372,7 +372,75 @@ array=[1,2,3,4,5,6,7]
 t = 12
 print (suma_pares_cercano_a_t(array,t))'''
 
+#----------------------------------------------------------------------------------------------------------------------------------------#
+
+'''Dado un arreglo de enteros (pueden ser negativos), encuentra un subarreglo continuo cuya
+ suma sea exactamente (S) y que tenga longitud mínima. Si no existe, imprime -1'''
 
 
+'''def sub_arreglo_sumaexacta(array:List[int], target:int)->List[int]:
+    subarrays_target:List[List[int]] = []
+    for i in range(len(array)):
+        if array [i] == target:
+            subarrays_target.append([array[i]])
+        if i < len (array)-1 and sum(array [i:i+2]) == target:
+            subarrays_target.append(array[i:i+2])
+        if i < len (array)-2 and sum(array [i:i+3]) == target:
+            subarrays_target.append(array[i:i+3])
+
+    print(subarrays_target)
+
+    if subarrays_target == []:
+        return -1
+
+    tam_min=float ('inf')
+    min_array = None
+    for j in subarrays_target:
+        if len(j) <= tam_min:
+            min_array = j
+            tam_min = len(j)
+    
+    return min_array
+
+arr= [5]
+print (sub_arreglo_sumaexacta(arr,7))'''
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------#
+#subMatriz NxN con mas 1 y menos area
+'''Dada una matriz (N \times M) de 0/1, encuentra el rectángulo (submatriz) con máxima cantidad
+ de 1s. Si hay empate, elige el de menor área; si persiste, el que tenga esquina superior
+   izquierda “más pequeña” (fila, luego columna).'''
+Matriz = [[0,1,1,1],[0,1,0,1],[0,1,1,1],[0,0,0,0],[0,0,0,0]]
+
+def matriz_mas_1(matrix:List[List[int]])-> Tuple[List[int],int,int]:
+
+    max1 = float('-inf')
+    min_n = float('inf')
+    for fil in range (len(matrix)):
+        for col in range (len(matrix[fil])):
+            for n in range (col,len(matrix[fil])):
+                count=0 
+                for sfil in range (fil,n+1):
+                    for scol in range (col,n+1):
+                        if matrix[sfil][scol]== 1:
+                            count+=1
+
+                # ÚNICO CAMBIO: Calculamos el tamaño del lado
+                lado = n - col + 1
+
+                if max1 < count:
+                    max1=count
+                    min_n=lado
+                    ubi = [fil,col]
+                if max1 == count and min_n > lado:
+                    min_n=lado
+                    ubi = [fil,col]
+
+    return ubi, min_n, max1
+
+r=matriz_mas_1(Matriz)
+print (r)
+print (f'la matriz con mas 1s tiene : "{r[2]}" 1s y esta en la posicion : {r[0]} ')
 
 
