@@ -231,6 +231,7 @@ def subconjunto_max_valor(peso:List[int], valor:List[int], W:int )-> List[int]:
         for j in range(ultimo_i+1,len(peso_valor)):
             if ([peso_valor[j],current] not in comb_aux) and (peso_valor[j] != current) : 
                 comb_aux.append(current + [peso_valor[j]])
+                
 
     for k in combinaciones: 
         peso_t = sum( m[0] for m in k )
