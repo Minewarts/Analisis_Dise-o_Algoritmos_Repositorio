@@ -108,7 +108,7 @@ print(combinaciones_suma(candidatos,k))'''
 
 #Encontrar palabras en una matriz
 
-board = [['A','B','C','E'], 
+'''board = [['A','B','C','E'], 
          ['S','F','C','S'], 
          ['A','D','E','E']]
 word = "ABCCED"
@@ -171,4 +171,83 @@ def buscar_en_matriz(word: str, board: List[List[str]]) -> bool:
                     return True
     return False
 
-print(buscar_en_matriz(word,board))
+print(buscar_en_matriz(word,board))'''
+
+#-------------------------------------------------------------------------------------------------#
+
+#permutaciones
+
+
+'''nums = [1,2,3]
+
+def generar_permutaciones(nums:List[int],N:int = 0 ,current:List[int] = [], permutaciones:List[List[int]] = []):
+    if N == 0:
+        N=len(nums)
+
+    if len(current) == N:
+        permutaciones.append(current.copy())
+        return permutaciones
+
+    for i in range(len(nums)): 
+        if i != 0 :
+            resto = nums[:i] + nums[i+1:]
+        else:
+            resto = nums[1:]
+        current.append(nums[i])
+        generar_permutaciones(resto,N,current,permutaciones)
+        current.pop()
+
+    return permutaciones
+
+print(generar_permutaciones(nums))
+        '''
+
+#-------------------------------------------------------------------------------------------------#
+
+'''digits = [2,3]
+words = ['abc','def']
+
+
+def gen_combs(digits: List[int], words: List[str], current:str = "",combs: List[str] = [], index:int = 0)->List[str]:
+
+    if len(current) == len(digits):
+        combs.append(current)
+        return combs
+
+    for i in range(len(words[index])):
+        current+=words[index][i]
+        gen_combs(digits,words, current, combs, index + 1)
+        current= current[:-1]
+
+    return combs
+
+print(gen_combs(digits, words))
+'''
+
+s = "aab"
+
+def dividir_palindromo(string:str,curr_partition:List[str] = [],partitions:List[List[str]] = [] , index:int = 0)-> List[List[str]]:
+
+    if index == len(string):
+        partitions.append(curr_partition.copy())
+        return partitions
+
+    for i in range (index, len(string)):
+        subcadena = string[index : i+1 ]
+        if subcadena == subcadena[::-1]:
+            curr_partition.append(subcadena)
+
+            dividir_palindromo(string, curr_partition, partitions, i+1) 
+
+            curr_partition.pop()
+
+
+    return partitions
+
+print(dividir_palindromo(s))
+
+
+board = [[0,1,9,0,0,4,0,0,0],
+         [3,0,0,2,0,0,1,0,0],
+         [0,0,0,0,1,0,3,7,5],
+         [6,3,0,0,]]
