@@ -76,7 +76,7 @@ print(sub_cadenas_balanceadas(s4))'''
 #                                  Ejercicio 3
 #--------------------------------------------------------------------------------#
 
-s1 = "cczazcc"; repeat_limit_1 = 3
+'''s1 = "cczazcc"; repeat_limit_1 = 3
 s2 = "aababab"; repeat_limit_2 = 2
 
 def order_limit(string:str, limit:int)->str:
@@ -98,4 +98,4 @@ def order_limit(string:str, limit:int)->str:
     return string
 
 print(order_limit(s1,repeat_limit_1))
-print(order_limit(s2,repeat_limit_2))
+print(order_limit(s2,repeat_limit_2))'''
