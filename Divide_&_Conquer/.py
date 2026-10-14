@@ -71,7 +71,7 @@ print(Count([1, 2, 3, 4, 5, 5, 5, 5, 5, 6], 5))
 
 ##Merge Sort
 
-def MergeSort(array:List[int])->List[int]:
+'''def MergeSort(array:List[int])->List[int]:
     if len(array) == 0:
         return []
     if len(array) == 1:
@@ -100,10 +100,94 @@ def MergeSort(array:List[int])->List[int]:
     
     return r_array
 
-print(MergeSort([8,9,4,8,6]))
+print(MergeSort([8,9,4,8,6]))'''
 
+
+#N/2 --- n+1
+'''Dado un número entero positivo n, se pueden aplicar las siguientes operaciones:
+
+Si n es par, reemplázalo por n / 2.
+Si n es impar, reemplázalo por n + 1 o n - 1.
+Tu tarea consiste en retornar el número mínimo de operaciones necesarias para que n se convierta en 1.'''
+
+
+'''def n_op(n:int)->int:
+    if n == 1:
+        return 0
+    if n % 2 == 0:
+        return 1 + n_op(n//2)
+    else:
+        return min(1+n_op(n-1),1+n_op(n+1))
+
+print(n_op(7))
+'''
+    
+#count pero con los dos ultimos valores
+
+'''def Count(array:List[int],target:int,k:int)->List[int]:
+    i = 0
+    j = len(array)
+    flag = False
+    while True:
+        if not flag:
+            mid = (j+i)//2
+            if i == j:
+                if i >= len(array) or array[i] != target:
+                    return []
+                flag = True
+                r_i = i 
+                i = 0
+                j = len(array) - 1 
+                continue
+            if array[mid] >= target:
+                j = mid
+            elif array[mid] < target:
+                i = mid+1
+
+        else:
+            mid = (j+i)//2 + 1
+            if i == j:
+                if k > (j-r_i)+1:
+                    raise ValueError('No hay suficientes ocurrencias')
+                return array[j-k+1:j+1]
+                     
+            if array[mid] <= target:
+                i = mid
+            elif array[mid] > target:
+                j = mid-1
+
+print(Count([3, 5, 7, 7, 7, 7, 9, 11, 11],7,6))'''
+
+def find_less_dif(array:List[int], curr_dif:int= float("inf"), curr_index:int= None,i:int = 0,j:int = None)->int:
+    
+    if j is None:
+        j = len(array) - 1
+
+    if i > j:
+        return curr_index
+    
+    if curr_dif is None:
+        curr_dif = float("inf")
+
+    mid = (i+j)//2
+    dif = array[mid] - mid 
+     
+    if dif == 0:
+        return mid
+    if abs(dif) <= curr_dif:
+        curr_index = mid
+        curr_dif = abs(dif)
+
+    if dif > 0:
+        j = mid-1     
+    if dif < 0:
+        i = mid+1
+
+    min = find_less_dif(array, curr_dif, curr_index, i, j)
+    return min
+    
+print(find_less_dif([-10, -5, -1, 4, 6, 9]))
     
 
-        
 
-     
+
