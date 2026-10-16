@@ -158,7 +158,7 @@ print(n_op(7))
 
 print(Count([3, 5, 7, 7, 7, 7, 9, 11, 11],7,6))'''
 
-def find_less_dif(array:List[int], curr_dif:int= float("inf"), curr_index:int= None,i:int = 0,j:int = None)->int:
+'''def find_less_dif(array:List[int], curr_dif:int= float("inf"), curr_index:int= None,i:int = 0,j:int = None)->int:
     
     if j is None:
         j = len(array) - 1
@@ -187,7 +187,40 @@ def find_less_dif(array:List[int], curr_dif:int= float("inf"), curr_index:int= N
     return min
     
 print(find_less_dif([-10, -5, -1, 4, 6, 9]))
-    
+'''
 
 
+#maximo array con que este dentro del limite de la suma
+def max_array_limit_sum(array:List[int], limit_array:List[int])->List[int]:
+    array.sort()
+    r_array = []
+    acc = 0
+    acc_array = []
+    for i in array:
+        acc+=i
+        acc_array.append(acc)
 
+    for j in limit_array:
+        left = 0
+        right = len(acc_array) - 1
+        max = float("-inf")
+        while True:
+            if left>right:
+                break
+            mid = (left+right)//2
+            if acc_array[mid] == j:
+                max = mid
+                break
+            if acc_array[mid] > j:
+                right = mid-1 
+            if acc_array[mid] < j:
+                left = mid+1 
+            if  mid > max and acc_array[mid] < j:
+                max = mid 
+
+
+        r_array.append(max+1)
+
+    return r_array
+
+print(max_array_limit_sum([4,5,2,1],[3,10,21]))
