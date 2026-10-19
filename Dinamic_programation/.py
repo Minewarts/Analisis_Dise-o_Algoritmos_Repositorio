@@ -1,6 +1,6 @@
 #se aplica especialmente cuando hay subproblema solapados, nos genera el mismo sub_arbol
 #-Memoization - Top Down - espacial O(2n) - temporal
-#-Tabulation - Bottom Up
+#-Tabulation - Bottom Up - O(n) - 
 
 import sys
 from typing import Dict, List, Tuple
@@ -28,7 +28,7 @@ print(fibonacci(800))
 
 print(fibonacci_tab(5))'''
 
-def coinchange(target:int, coins:List[int], memo:Dict[int:bool] = {}, acc:int = 0, count:int = 0)->Tuple[bool, int]:
+'''def coinchange(target:int, coins:List[int], memo:Dict[int:bool] = {}, acc:int = 0, count:int = 0)->Tuple[bool, int]:
     if target==0:
         return False,count
     if acc in memo:
@@ -56,9 +56,40 @@ def coinchange(target:int, coins:List[int], memo:Dict[int:bool] = {}, acc:int = 
     memo[acc] = False
     return memo[acc],count
 
-print(coinchange(9,[4,2,5,1]))
+print(coinchange(9,[4,2,5,1]))'''
 
-            
-        
+#Montañas
 
+'''def mountains(array:List[int])->int:
+    izq,der = 0,len(array)-1
+    while True:
+        mid = (izq+der)//2
+        if array[mid]> array[mid-1] and array[mid]> array[mid+1]:
+            return mid
+        if array[mid]> array[mid+1]:
+            der = mid-1
+        if array[mid]> array[mid-1]:
+            izq = mid+1'''
     
+
+'''arr = [1, 2, 3, 1]
+arr = [1, 2, 1, 3, 5, 6, 4]
+print(mountains(arr))
+'''
+
+def finding_target_move(array:List[int], target:int)->int:
+    der,izq = len(array)-1, 0
+    while True:
+        mid = (der+izq)//2
+        if izq > der:
+            return -1
+        if target == array[mid]:
+            return mid
+        if target < array[der] and target > array[mid]:
+            izq = mid+1
+        if target < array[izq] and target < array[mid]:
+            der = mid-1
+        if target < array[izq] and target < array[mid]:
+            der = mid-1
+        if target < array[izq] and target < array[mid]:
+            der = mid-1
