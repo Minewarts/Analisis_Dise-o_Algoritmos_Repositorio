@@ -77,7 +77,7 @@ arr = [1, 2, 1, 3, 5, 6, 4]
 print(mountains(arr))
 '''
 
-def finding_target_move(array:List[int], target:int)->int:
+'''def finding_target_moved(array:List[int], target:int)->int:
     der,izq = len(array)-1, 0
     while True:
         mid = (der+izq)//2
@@ -85,11 +85,49 @@ def finding_target_move(array:List[int], target:int)->int:
             return -1
         if target == array[mid]:
             return mid
-        if target < array[der] and target > array[mid]:
+
+        if target > array[mid]:
             izq = mid+1
-        if target < array[izq] and target < array[mid]:
+
+        if target <= array[der] and target < array[mid]:
+            izq = mid+1
+
+        if target > array[izq] and target < array[mid]:
             der = mid-1
-        if target < array[izq] and target < array[mid]:
-            der = mid-1
-        if target < array[izq] and target < array[mid]:
-            der = mid-1
+
+print(finding_target_moved([4, 5, 6, 7, 0, 1, 2], 0))'''
+
+
+#Ejercicio Escalas, se pueden subir de 1 a 3 escalas, de cuants manera se pueden subir, n escalas
+
+'''def escalar(target:int):
+    #memo = [0,1,2,4]
+    c1 = 1
+    c2 = 2
+    c3 = 4
+    for _ in range(3,target):
+
+        r = c1 + c2 + c3
+        c1 = c2
+        c2 = c3
+        c3 = r
+    return r
+
+print(escalar(5))
+'''
+        
+'''def escalar(array:List[int])->int:
+    c1,c2,c3 = array[0],array[1],array[2]
+    r = 0
+    for i in range(3,len(array)):
+        r =  min(c1,c2,c3) + array[i]
+        c1 = c2
+        c2 = c3
+        c3 = r
+    return r
+
+print(escalar([5,1,2,4,1]))
+'''
+def escalar(array:List[int], ):        
+        
+
