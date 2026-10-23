@@ -128,6 +128,6 @@ print(escalar(5))
 
 print(escalar([5,1,2,4,1]))
 '''
-def escalar(array:List[int], ):        
+def escalar(array:List[int],memo:Dict{int:int} =,count:int = 0):        
         
 
