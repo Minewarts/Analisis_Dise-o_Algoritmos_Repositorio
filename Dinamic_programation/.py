@@ -128,7 +128,7 @@ print(escalar(5))
 
 print(escalar([5,1,2,4,1]))
 '''
-def escalar(target,memo:Dict[int,int] = None)->int:
+'''def escalar(target,memo:Dict[int,int] = None)->int:
     if memo is None:
         memo = {0:0, 1:1, 2:2, 3:4}
     
@@ -145,5 +145,76 @@ def escalar(target,memo:Dict[int,int] = None)->int:
     memo[target] = count
     return count
 
-print(escalar(9))    
-        
+print(escalar(9))'''
+
+'''def escalar(array:List[int],memo:Dict[int,int] = None, target = None)->int:
+    if len(array) == 0: return 0
+    if memo is None:
+        memo = {0:0, 1:array[0], 2:array[1], 3:array[2]}
+        target = len(array)-1
+    
+    if target<0:
+        return 0
+    
+    if array[target] in memo:
+        return memo[target]
+
+    salto_1= escalar(array,memo, target-1)
+    salto_2= escalar(array,memo, target-2)
+    salto_3= escalar(array,memo, target-3)
+    memo[target]= min(salto_1,salto_2,salto_3) + array[target]
+
+    return memo[target]
+
+print(escalar([5,1,2,4,1]))'''
+
+'''def como_llegar(matrix:List[List[int]], i:int=None,j:int=None, memo={(0,0):1})->int:
+    if i == None:
+        i=len(matrix)-1
+        j=len(matrix[i])-1
+    if (i,j) in memo:
+        return memo[(i,j)] 
+
+    abajo = 0
+    derecha = 0
+    if i > 0:
+        abajo=como_llegar(matrix, i-1, j,memo)
+    if j > 0:
+        derecha=como_llegar(matrix, i, j-1,memo)
+
+    memo[(i,j)]= abajo + derecha
+    return memo[(i,j)]
+print(como_llegar([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]))
+'''
+def como_llegar_obs(matrix:List[List[int]], target:Tuple[int,int], i:int =None ,j:int = None, memo:int = None)->int:
+    if memo == None:
+        memo = {}
+        memo[(0,0)] = 1
+        i,j = target[0],target[1]
+
+    if (i,j) in memo:
+        return memo[(i,j)] 
+    if matrix[i][j] == "*":
+        return 0
+    
+
+    abajo = 0
+    derecha = 0
+    if i > 0:
+        abajo=como_llegar_obs(matrix,target , i-1, j,memo)
+    if j > 0:
+        derecha=como_llegar_obs(matrix,target , i, j-1,memo)
+
+    memo[(i,j)]= abajo + derecha
+    return memo[(i,j)]
+
+print(como_llegar_obs([[0,0,0,0],[0,"*",0,0],[0,0,"*",0],[0,0,0,0]],(2,3)))
+
+
+
+
+
+
+
+
+
