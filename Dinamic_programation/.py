@@ -128,6 +128,22 @@ print(escalar(5))
 
 print(escalar([5,1,2,4,1]))
 '''
-def escalar(array:List[int],memo:Dict{int:int} =,count:int = 0):        
-        
+def escalar(target,memo:Dict[int,int] = None)->int:
+    if memo is None:
+        memo = {0:0, 1:1, 2:2, 3:4}
+    
+    if target in memo:
+        return memo[target]
 
+    count = 0
+    for i in range(1,4):
+        if target-i < 0:
+            break
+        
+        count += escalar(target-i,memo)
+
+    memo[target] = count
+    return count
+
+print(escalar(9))    
+        
